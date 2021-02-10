@@ -1,0 +1,210 @@
+/* STYLE CSS: Pagina */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+/* STYLE CSS: Box Generale  */
+#Container-generale{
+    background-color: black;
+    width: 100%;
+    min-height: 380vh;
+}
+
+/* STYLE CSS: Box header  */
+.container-header{
+    height: 90px;
+    padding:0px 20px;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* STYLE CSS: Header img  */
+.container-header img{
+    width: 150px;
+    margin: -10px 5px;
+}
+
+/* STYLE CSS: Header ul  */
+.container-header ul{
+    list-style: none;
+    display: flex;
+}
+
+/* STYLE CSS: Header ul li  */
+.container-header ul li{
+    color: white;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.container-header ul li p.lingua{
+    width: 34px;
+    height: 35px;
+    padding: 6px 1px;
+    border: 1px solid grey;
+    margin-top: -7px;
+}
+
+.container-header ul li p.lingua:hover{
+    background-color: white;
+    color: black;
+}
+
+.container-header ul li#preferiti:hover{
+    text-decoration: underline red;
+} 
+
+/* STYLE CSS: Header ul li input  */
+.container-header ul li input{
+    width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+/* STYLE CSS: Input on focus  */
+.container-header ul li input:focus{
+    outline: none;
+}
+
+/* STYLE CSS: Icons  */
+.container-header .header-rigth i.bigger{
+    font-size: 30px;
+    margin: -5px 5px;
+}
+
+.container-header .header-rigth i:hover{
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+}
+
+.container-header .header-rigth i ul{
+    width: 100px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.281);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -70px;
+}
+
+.container-header .header-rigth i ul li{
+    margin: 5px 0px;
+}
+
+.container-header .header-rigth i ul li:hover{
+    text-decoration: underline white;
+}
+/* FINE STYLE CSS: Box header  */
+
+/* STYLE CSS: Main  */
+h2{
+    color: white;
+    text-align: center;
+}
+
+.box-filter{
+    margin: 10px 0px;
+    margin-left: 45%;
+}
+
+/* STYLE CSS: Box per film/ serie tv  */
+.container-film{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+}
+
+/* STYLE CSS: Box per film  */
+.container-film .film{
+    flex-basis: calc(100% / 5);
+    margin: 20px 10px;
+    color: white;
+}
+
+/* STYLE CSS: Box film img  */
+.container-film .film img{
+    width: 200px;
+    height: 300px;
+}
+
+/* STYLE CSS: Box  info film/serie tv  */
+.container-film .film .container-info{
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    position: absolute;
+    opacity: 0;
+    color: white;
+}
+
+/* STYLE CSS: info on hover  */
+.container-film .film .container-info:hover{
+    opacity: 1;
+    background-color: rgba(12, 12, 12, 0.919);
+}
+
+.container-film .film .container-info div,p{
+    margin: 3px 0px;
+}
+
+.container-film .film .container-info div span{
+    font-size: 13px;
+}
+
+/* STYLE CSS: Box img in p  */
+.container-film .film .container-info div img {
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+}
+
+/* STYLE CSS: Box p in film/serie tv info scroll */
+.container-film .film .container-info .overview{
+    height: 75px;
+    overflow-y: scroll;
+}
+
+/* STYLE CSS: Box stelle  */
+.container-film .film span i{
+    color: yellow;
+}
+/* FILE STYLE CSS: Main */
+
+/* STYLE CSS: Azioni comandate  */
+.hide{
+    opacity: 0;
+}
+
+.show{
+    opacity: 1;
+}
+
+.close{
+    opacity: 0;
+}
+
+.open{
+    opacity: 1;
+}
+
+.chiusa{
+    opacity: 0;
+}
+
+.aperta{
+    opacity: 1;
+}
+
+.b{
+    color: white;
+}

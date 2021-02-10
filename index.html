@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue-Boolflix</title>
+        <!-- LINK: Font family -->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <!-- SCRIPT: Collegamento Vue JS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+        <!-- SCRIPT: Collegamento Axios  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+        <!-- LINK: Style CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- LINK: Font awesome  -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    </head>
+    <body>
+
+        <!-- CONTENITORE: Box su cui applico Vue js  -->
+        <div id="Container-generale">
+
+            <!-- CONTENITORE: Header   -->
+            <header>
+                <div class="container-header">
+                    <!-- CONTENITORE: Box header left (logo-lingua-preferiti)  -->
+                    <ul class="header-left">
+                        <li><img src="img/download.png" alt=""></li>
+                        <li>
+                            <p class="lingua">it-IT</p>   
+                        </li>
+                        <li id="preferiti">HOME</li>
+                        <li id="preferiti">PREFERITI</li>
+                        <li id="preferiti">MY LIST</li>
+                        <li id="preferiti">FILM</li>
+                        <li id="preferiti">SERIE TV</li>
+                    </ul>
+                    <!--FINE CONTENITORE: Box header left (logo-lingua-preferiti)  -->
+
+                    <!-- CONTENITORE: Box header rigth (searc bar-account-notifiche)  -->
+                    <ul class="header-rigth">
+                        <li> <input @keyup.delete='svuota' @keydown.enter='cerca' v-model='sceltaFilm' type="text" name="" :class="search"> </li>
+                        <li><i @click='open' class="fas fa-search"></i></li>
+                        <li><i class="far fa-bell"></i></li>
+                        <li><i class="fas fa-gift"></i></li>
+                        <li>
+                            <i class="bigger fas fa-user-circle"></i> 
+                            <i @click ='openService()' class="fas fa-angle-down">
+                                <ul :class='impostazioni'>
+                                    <li>Account</li>
+                                    <li>Impostazioni</li>
+                                    <li>Esci</li>
+                                </ul>
+                            </i>
+                        </li>
+                    </ul>
+                    <!--FINE CONTENITORE: Box header rigth (searc bar-account-notifiche)  -->
+
+                </div>
+            </header>
+            <!-- FINE CONTENITORE: Header   -->
+    
+            <!-- CONTENITORE: Main   -->
+            <main>
+
+                <!-- CONTAINER: H2 per top  -->
+                <h2 :class='(sceltaFilm == "") ? "show" : "hide"'>Top Del Momento</h2>
+                <!-- FINE CONTAINER: H2 per top  -->
+                
+                <!-- CONTENITORE: Select per filtrare gli elementi visualizzati in base al genere  -->
+                <select :class='myClass' v-model='visualizza' class="box-filter">
+                    <option :value="genere" v-for='genere in generi'>{{genere.name}}</option>
+                </select>
+                <!-- FINE CONTENITORE: Select per filtrare gli elementi visualizzati in base al genere  -->
+                
+                <!-- CONTENITORE: film/ serie tv generale -->
+                <div class="container-film">
+                    
+                    <!-- CONTENITORE: film /serie tv singolo -->
+                    <div v-if='movie.genre_ids.includes(visualizza.id) || visualizza == "All"' class="film" v-for = 'movie in allFilmSerie'>
+                        <div class="container-info">
+                            <h3 v-if = '!movie.title'>Titolo: {{movie.name}}</h3>
+                            <h3 v-else >Titolo: {{movie.title}}</h3>
+                            <div v-if='movie.original_language == "en" || movie.original_language == "it" || movie.original_language == "es"'> 
+                                <strong>Lingua originale: </strong> 
+                                <img :src="'img/' + movie.original_language + '.png' " alt="">
+                            </div>
+                            <p v-else>Lingua originale: {{movie.original_language}}</p>
+                            <div>
+                                <strong>Cast:</strong>
+                                <span v-for='attori in movie.cast'>{{attori}} </span>
+                            </div>
+                            <div>
+                                <strong>Genere:</strong>
+                                <span v-if ='movie.genre_ids.includes(genere.id)' v-for = 'genere in generi'>{{genere.name}} </span> 
+                            </div>
+                            <div>
+                                <strong>Voto: </strong>
+                                <span v-for = 'stelle in movie.vote_average'><i class="fas fa-star"></i></span>
+                                <span v-for= 'i in 5 - movie.vote_average'><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="overview" > <strong>Info: </strong> <span>{{movie.overview}}</span></div>
+                        </div>
+                        <img v-if='movie.poster_path == null' src="img/download.png" alt="">
+                        <img v-else :src=" 'https://image.tmdb.org/t/p/w342' + movie.poster_path" alt="">
+                    </div>
+                    <!--FINE CONTENITORE: film / serie tv  singolo -->
+
+                </div>
+                <!--FINE CONTENITORE: film/ serie tv generale -->
+
+            </main>
+            <!--FINE CONTENITORE: Main  -->
+            
+        </div>
+        <!--FINE CONTENITORE: Box su cui applico Vue js  -->
+        
+        <!-- SCRIPT: Collegamento Script  -->
+        <script src="js/script.js" charset="utf-8"></script>
+
+    </body>
+</html>
